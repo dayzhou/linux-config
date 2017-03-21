@@ -23,15 +23,15 @@ fi
 
 
 # npm
+#NPM_PACKAGES=$HOME/.npm-packages
+#PATH=$NPM_PACKAGES/bin:$PATH
 #unset MANPATH
 #MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-#NPM_PACKAGES=$HOME/.npm-packages
-#PATH=$NPM_PACKAGES/bin:$HOME/.local/bin:$HOME/bin:$PATH
 
 # eclipse
 PATH=~/eclipse:$PATH
 
 PS1='\n________________________________\n[\u@\h] \W \$ '
 
-export PATH
+export PATH=$HOME/.local/bin:$HOME/bin:$PATH
 #export MANPATH

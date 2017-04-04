@@ -16,6 +16,9 @@ Plugin 'vim-scripts/indentpython.vim'
 " auto-completion
 Plugin 'Valloric/YouCompleteMe'
 
+" Go auto-completion
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
+
 " Syntax checking and highlighting
 Plugin 'scrooloose/syntastic'
 
@@ -37,7 +40,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 
 " status bar
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " Distraction-free writing
 Plugin 'junegunn/goyo.vim'
@@ -50,6 +53,28 @@ Plugin 'tpope/vim-surround'
 
 " repeat tool for plugin actions
 Plugin 'tpope/vim-repeat'
+
+" Minibuffer Explorer
+Plugin 'fholgado/minibufexpl.vim'
+
+" ultisnips: the snippets engine
+Plugin 'SirVer/ultisnips'
+" vim-snippets
+Plugin 'honza/vim-snippets'
+
+" auto delimit
+Plugin 'Raimondi/delimitMate'
+
+" light-as-air status bar
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" Markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+" tag bar
+Plugin 'majutsushi/tagbar'
 
 " ===== Other examples =====
 "
@@ -96,17 +121,23 @@ nnoremap <Leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " conditional theme
 if has('gui_running')
-  set background=dark
-  colorscheme solarized
-  call togglebg#map("<F5>")
+"  set background=dark
+"  colorscheme solarized
+  colorscheme zenburn
+"  call togglebg#map("<F5>")
 else
   colorscheme zenburn
 endif
 
 " hide .pyc
 let NERDTreeIgnore=['\.pyc$', '\~$']
+map <C-n> :NERDTreeToggle<CR>
+
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+set laststatus=2
 
 nnoremap <F5> :Goyo<CR>
+nmap <F8> :TagbarToggle<CR>
 
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 " filetype plugin on
@@ -181,12 +212,15 @@ set foldlevel=99
 " folding with spacebar
 nnoremap <space> za
 
+" set a colored column to indicate line width limitation
+set colorcolumn=82
+highlight ColorColumn ctermbg=Black guibg=Black
+
 " indentation
 au BufRead,BufNewFile *.py
   \ set tabstop=2 |
   \ set softtabstop=2 |
   \ set shiftwidth=2 |
-  \ set textwidth=79 |
   \ set expandtab |
   \ set autoindent |
   \ set syn=python |

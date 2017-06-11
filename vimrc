@@ -18,6 +18,8 @@ Plugin 'Valloric/YouCompleteMe'
 
 " Go auto-completion
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
+" Language support
+Plugin 'fatih/vim-go'
 
 " Syntax checking and highlighting
 Plugin 'scrooloose/syntastic'
@@ -55,7 +57,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 
 " Minibuffer Explorer
-Plugin 'fholgado/minibufexpl.vim'
+"Plugin 'fholgado/minibufexpl.vim'
 
 " ultisnips: the snippets engine
 Plugin 'SirVer/ultisnips'
@@ -63,7 +65,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 " auto delimit
-Plugin 'Raimondi/delimitMate'
+" Plugin 'Raimondi/delimitMate'
 
 " light-as-air status bar
 Plugin 'vim-airline/vim-airline'
@@ -203,6 +205,11 @@ nnoremap <C-H> <C-W><C-H>
 "   set term=screen-256color
 " endif
 
+" Golang
+set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+
+autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
+" autocmd BufWritePost,FileWritePost *.go execute 'GoCoverage' | cwindow
 
 " Python
 

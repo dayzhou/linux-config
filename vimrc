@@ -35,6 +35,9 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 
+" NERD commenter
+Plugin 'scrooloose/nerdcommenter'
+
 " super searching
 Plugin 'kien/ctrlp.vim'
 
@@ -132,8 +135,11 @@ else
 endif
 
 " hide .pyc
-let NERDTreeIgnore=['\.pyc$', '\~$']
+let NERDTreeIgnore=['\.pyc$', '\~$', '^node_modules$', '^venv$']
 map <C-n> :NERDTreeToggle<CR>
+
+" space after comment delimiters
+let g:NERDSpaceDelims = 1
 
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
 set laststatus=2
@@ -220,7 +226,7 @@ set foldlevel=99
 nnoremap <space> za
 
 " set a colored column to indicate line width limitation
-set colorcolumn=82
+set colorcolumn=100
 highlight ColorColumn ctermbg=Black guibg=Black
 
 " indentation
